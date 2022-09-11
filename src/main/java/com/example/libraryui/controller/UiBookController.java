@@ -7,10 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("ui/books")
@@ -51,6 +48,26 @@ public class UiBookController {
             return "books/add";
         }
         this.bookDao.add(book);
+        return "redirect:list";
+    }
+
+    @GetMapping("edit")
+    public String edit(@RequestParam long bookId, Model model) {
+        Book book = this.bookDao.get(bookId);
+        model.addAttribute("book", book);
+        model.addAttribute("title", "本更新");
+        return "books/edit";
+    }
+
+    @PostMapping("edit")
+    public String edit(@Validated Book book,
+                       BindingResult result,
+                       Model model) {
+        if (result.hasErrors()) {
+            model.addAttribute("pageTitle", "本更新");
+            return "books/edit";
+        }
+        this.bookDao.set(book);
         return "redirect:list";
     }
 

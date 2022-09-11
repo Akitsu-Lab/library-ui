@@ -9,4 +9,6 @@ public interface BookDao {
     Book get(long bookId);
 
     void add(Book book);
+
+    void set(Book book);
 }

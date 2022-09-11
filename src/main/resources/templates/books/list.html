@@ -17,7 +17,8 @@
     </thead>
     <tbody>
     <tr th:each="book : ${bookList.bookList}">
-        <td><a th:text="${book.bookId}" class="idlink">-1</a></td>
+        <td><a href="/ui/books/edit?bookId=-1" th:href="@{edit(bookId=${book.bookId})}"
+               th:text="${book.bookId}" class="idlink">-1</a></td>
         <td th:text="${book.bookTitle}">test</td>
         <td th:text="${book.bookPages}">test</td>
         <td th:text="${book.bookContent}">test</td>
