@@ -7,7 +7,7 @@ public class Book {
     private long bookId;
     @NotEmpty(message = "タイトルを空文字にできません")
     private String bookTitle;
-//    @NotEmpty(message = "ページ数は空文字にできません")
+    //    @NotEmpty(message = "ページ数は空文字にできません")
     private int bookPages;
     private String bookContent;
 
