@@ -20,5 +20,5 @@ sudo kill 番号
 ```
 ### jarファイルの実行
 ```
-java -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005 -jar target/library-api-0.0.1-SNAPSHOT.jar
+java -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005 -jar target/library-ui-0.0.1-SNAPSHOT.jar
 ```
