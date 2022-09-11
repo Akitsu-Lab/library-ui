@@ -14,8 +14,11 @@ sudo kill 番号
 ## 実行
 ### 実行可能jarファイルの作成
 ```
+権限変更
+chmod 744 mvnw
+jarファイル作成
 ./mvnw clean package
-テスト失敗時
+テスト通さずjarファイル作成
 ./mvnw clean package -DskipTests=true
 ```
 ### jarファイルの実行
