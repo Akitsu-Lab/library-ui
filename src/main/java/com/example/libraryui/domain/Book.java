@@ -7,11 +7,13 @@ public class Book {
     private long bookId;
     @NotEmpty(message = "タイトルを空文字にできません")
     private String bookTitle;
-    @NotEmpty(message = "ページ数は空文字にできません")
+//    @NotEmpty(message = "ページ数は空文字にできません")
     private int bookPages;
     private String bookContent;
 
-    public Book(){}
+    public Book() {
+    }
+
     public Book(long bookId, String bookTitle, int bookPages, String bookContent) {
         this.bookId = bookId;
         this.bookTitle = bookTitle;
