@@ -61,6 +61,20 @@ public class BookDaoImpl implements BookDao, InitializingBean {
     }
 
     @Override
+    public void set(Book book) {
+        String setApiUrl = this.bookApiUrlPrefix + "/{bookId}";
+        Map<String, Long> params = new HashMap<>();
+        params.put("bookId", book.getBookId());
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<Book> request =
+                new HttpEntity<>(book, headers);
+        this.restOperations.patchForObject(setApiUrl, request,
+                String.class, params);
+    }
+
+    @Override
     public void afterPropertiesSet() throws Exception {
         this.bookApiUrlPrefix = "http://" + this.properties.getHost() + ":" + this.properties.getPort() + "/services/v1/books";
     }
