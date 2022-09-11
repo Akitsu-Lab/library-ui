@@ -1,11 +1,15 @@
 package com.example.libraryui.dao;
 
 import com.example.libraryui.configuration.ApiCallConfigurationProperties;
+import com.example.libraryui.domain.Book;
 import com.example.libraryui.domain.BookList;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestOperations;
 import org.springframework.web.util.UriComponentsBuilder;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Component
 public class BookDaoImpl implements BookDao, InitializingBean {
@@ -21,15 +25,30 @@ public class BookDaoImpl implements BookDao, InitializingBean {
 
     @Override
     public BookList find(String bookTitle) {
+        // APIコールのURLを作成する
+        // UriComponentsBuilderクラスを利用する
+        // URLはbookApiUrlRefixを利用する
         UriComponentsBuilder builder =
                 UriComponentsBuilder.fromHttpUrl(
                         this.bookApiUrlPrefix);
+        // クエリパラメータの処理
         if(bookTitle != null){
             builder.queryParam("bookTitle", bookTitle);
         }
+        //  APIコール
+        // getForObjectメソッドを実行
         return restOperations.getForObject(
                 builder.build().toUriString(),
                 BookList.class);
+    }
+
+    @Override
+    public Book get(long bookId) {
+        String getApiUrl = this.bookApiUrlPrefix + "/{bookId}";
+        Map<String, Long> params = new HashMap<>();
+        params.put("bookId",bookId);
+        return this.restOperations.getForObject(getApiUrl,
+                Book.class, params);
     }
 
     @Override
