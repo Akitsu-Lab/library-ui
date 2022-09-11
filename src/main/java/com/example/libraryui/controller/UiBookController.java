@@ -71,4 +71,10 @@ public class UiBookController {
         return "redirect:list";
     }
 
+    @GetMapping("delete")
+    public String delete(@RequestParam long bookId) {
+        this.bookDao.remove(bookId);
+        return "redirect:list";
+    }
+
 }

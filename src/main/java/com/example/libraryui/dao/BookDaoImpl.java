@@ -75,6 +75,14 @@ public class BookDaoImpl implements BookDao, InitializingBean {
     }
 
     @Override
+    public void remove(long bookId) {
+        String removeApiUrl = this.bookApiUrlPrefix + "/{bookId}";
+        Map<String, Long> params = new HashMap<>();
+        params.put("bookId", bookId);
+        this.restOperations.delete(removeApiUrl, params);
+    }
+
+    @Override
     public void afterPropertiesSet() throws Exception {
         this.bookApiUrlPrefix = "http://" + this.properties.getHost() + ":" + this.properties.getPort() + "/services/v1/books";
     }
