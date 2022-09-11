@@ -10,3 +10,15 @@ Ui of LibraryApplication
 sudo lsof -P -i:8081
 sudo kill 番号
 ```
+
+## 実行
+### 実行可能jarファイルの作成
+```
+./mvnw clean package
+テスト失敗時
+./mvnw clean package -DskipTests=true
+```
+### jarファイルの実行
+```
+java -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005 -jar target/library-api-0.0.1-SNAPSHOT.jar
+```
