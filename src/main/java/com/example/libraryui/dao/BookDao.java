@@ -3,7 +3,10 @@ package com.example.libraryui.dao;
 import com.example.libraryui.domain.Book;
 import com.example.libraryui.domain.BookList;
 
-public  interface BookDao {
+public interface BookDao {
     BookList find(String bookTitle);
+
     Book get(long bookId);
+
+    void add(Book book);
 }

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>新規登録</h1>
+<form th:action="@{add}" method="post">
+    <label for="bookTitle">本のタイトル</label>
+    <input type="text" id="bookTitle" name="bookTitle" th:value="${book.bookTitle}"/>
+    <br>
+    <label for="bookPages">ページ数</label>
+    <input type="number" id="bookPages" name="bookPages" th:value="${book.bookPages}"/>
+    <br>
+    <label for="bookContent">内容</label>
+    <input type="text" id="bookContent" name="bookContent" th:value="${book.bookContent}"/>
+    <br>
+    <button type="submit" id="submitbtn">登録</button>
+
+    <section th:if="${#fields.hasErrors('book.bookTitle')}" th:errors="${book.bookTitle}"
+             th:errorclass="err"></section>
+</form>
+<a th:href="@{list}">リストへ</a>
+
+</body>
+</html>
