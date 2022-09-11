@@ -18,9 +18,6 @@ public class UiBookConfiguration {
 
     @Bean
     public RestOperations restTemplate(RestTemplateBuilder builder) {
-        return new RestTemplateBuilder()
-                .requestFactory(
-                        HttpComponentsClientHttpRequestFactory.class)
-                .build();
+        return new RestTemplateBuilder().requestFactory(HttpComponentsClientHttpRequestFactory.class).build();
     }
 }
