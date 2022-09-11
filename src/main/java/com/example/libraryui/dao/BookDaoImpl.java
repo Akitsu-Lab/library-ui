@@ -78,7 +78,7 @@ public class BookDaoImpl implements BookDao, InitializingBean {
     public void remove(long bookId) {
         String removeApiUrl = this.bookApiUrlPrefix + "/{bookId}";
         Map<String, Long> params = new HashMap<>();
-        params.put("bookId",bookId);
+        params.put("bookId", bookId);
         this.restOperations.delete(removeApiUrl, params);
     }
 
