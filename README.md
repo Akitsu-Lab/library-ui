@@ -25,3 +25,8 @@ jarファイル作成
 ```
 java -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005 -jar target/library-ui-0.0.1-SNAPSHOT.jar
 ```
+
+### 動作確認
+```http request
+http://localhost:8081/ui/books/list
+```
