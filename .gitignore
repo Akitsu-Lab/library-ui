@@ -33,8 +33,4 @@ build/
 .vscode/
 
 ### その他 ###
-.mvn
-library-api.iml
-mvnw
-mvnw.cmd
 src/main/resources/application.yml
